@@ -30,8 +30,8 @@ pool
     return client
       .query(
         `
-      SELECT table_name 
-      FROM information_schema.tables 
+      SELECT table_name
+      FROM information_schema.tables
       WHERE table_schema = 'public';
     `
       )
@@ -55,6 +55,16 @@ app.get('/api', async (req, res) => {
     res.status(500).json({ error: 'Server error' })
   }
 })
+/* app.get('/products', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT * FROM products');
+    res.render('products', { products: result.rows });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Database error');
+  }
+});
+ */
 
 // Starta servern
 app.listen(port, () => {
