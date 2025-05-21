@@ -1,25 +1,25 @@
 {
   "compilerOptions": {
+    "incremental": true,
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+
     "target": "ES2022",
-    "lib": ["ES2023"],
+    "lib": ["ES2022"],
     "module": "ESNext",
+    "moduleResolution": "node",
+
+    "outDir": "dist",              // <--- SÄTTER var kompilerade .js-filer hamnar
+    "rootDir": "src",              // <--- SÄTTER var dina .ts-filer ligger (t.ex. i /src)
+
     "skipLibCheck": true,
+    "esModuleInterop": true,
 
-    /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "verbatimModuleSyntax": true,
-    "moduleDetection": "force",
-    "noEmit": true,
-
-    /* Linting */
+    /* Rekommenderad för production build */
+    "noEmit": false,               // <--- VIKTIGT! Slå av "noEmit" så att TS faktiskt SKRIVER .js-filer
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "erasableSyntaxOnly": true,
-    "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noFallthroughCasesInSwitch": true
   },
-  "include": ["vite.config.ts"]
+  "include": ["src"]
 }
