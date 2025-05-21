@@ -5,7 +5,7 @@ import dotenv from 'dotenv'
 
 dotenv.config() // Laddar .env-filen
 
-const { Pool } = pg // Extraherar Pool ur pg
+const { Pool } = pg
 const app = express()
 const port = process.env.PORT || 5050
 
@@ -21,31 +21,18 @@ const pool = new Pool({
   }
 })
 
-// Testa anslutning + visa tabeller
+// Testa anslutning
 pool
   .connect()
   .then((client) => {
     console.log('✅ Connected to database')
-
-    return client
-      .query(
-        `
-      SELECT table_name
-      FROM information_schema.tables
-      WHERE table_schema = 'public';
-    `
-      )
-      .then((result) => {
-        console.log('📋 Available tables:')
-        result.rows.forEach((row) => console.log('- ' + row.table_name))
-        client.release() // Viktigt!
-      })
+    client.release()
   })
   .catch((err) => {
     console.error('❌ Database connection error:', err)
   })
 
-// API: Test-endpoint , KOLLA ATT SERVERN är uppe!
+// API: Test-endpoint
 app.get('/api', async (req, res) => {
   try {
     const result = await pool.query('SELECT NOW()')
@@ -55,16 +42,19 @@ app.get('/api', async (req, res) => {
     res.status(500).json({ error: 'Server error' })
   }
 })
-/* app.get('/products', async (req, res) => {
+
+// API: Hämta alla produkter
+app.get('/products', async (req, res) => {
   try {
-    const result = await pool.query('SELECT * FROM products');
-    res.render('products', { products: result.rows });
+    const result = await pool.query('SELECT * FROM products')
+    res.json(result.rows)
   } catch (err) {
-    console.error(err);
-    res.status(500).send('Database error');
+    console.error('❌ Error in /products:', err)
+    res
+      .status(500)
+      .json({ error: 'Database error or table "products" does not exist' })
   }
-});
- */
+})
 
 // Starta servern
 app.listen(port, () => {
