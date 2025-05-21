@@ -8,9 +8,33 @@ function App() {
         .then(data => console.log(data));
     }, []);
 
+    return (
+        <div>
+        <h1>Min app</h1>
+        </div>
+          )
+
 }
 
 export default App
+
+/* import { useEffect } from 'react'
+import './App.css'
+
+function App() {
+  useEffect(() => {
+    fetch("/api")
+      .then(res => res.json())
+      .then(data => console.log(data))
+  }, [])
+
+
+  return (
+   <></>
+  )
+}
+
+export default App */
 
 /*  const [data, setData] = useState(null);
 
