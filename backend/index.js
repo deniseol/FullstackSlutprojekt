@@ -76,7 +76,7 @@ app.get('/api', async (req, res) => {
 
 // API: Hämta alla produkter
 
-app.get('/products', async (req, res) => {
+app.get('/api/products', async (req, res) => {
 
   try {
 
@@ -93,6 +93,21 @@ app.get('/products', async (req, res) => {
   }
 
 })
+
+
+/* app.post('/newProducts', (req, res) => {
+    const { name, text } = req.body;
+    if (!name || !text) {
+        return res.sendStatus(400);
+    }
+    data.push({ name, text });
+    //console.log(data)
+    res.json({
+        name: name,
+        text: text
+    })
+});
+ */
 
 
 app.get('/', async (req, res) => {
@@ -112,6 +127,7 @@ app.get('/', async (req, res) => {
   }
 
 })
+
 // Starta servern
 
 app.listen(port, () => {
@@ -119,4 +135,3 @@ app.listen(port, () => {
   console.log(`🚀 Server listening on port ${port}`)
 
 })
- 
