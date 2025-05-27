@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import './App.css'
 import Header from './components/header/Header.tsx'
-import ProductList from './components/productSide/products.tsx';
+
 
 function App() {
     useEffect(() => {
@@ -13,7 +13,6 @@ function App() {
     return (
       <>
       <Header />
-      <ProductList />
       <h1>Min app</h1>
     </>
           )
