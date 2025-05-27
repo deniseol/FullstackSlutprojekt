@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import type { Product } from '../types/Product';
 
-const ProductList: React.FC = () => {
+const Products: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -10,7 +10,7 @@ const ProductList: React.FC = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('/api/products');
+        const response = await fetch('http://localhost:5050/api/products');
 
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -53,4 +53,4 @@ const ProductList: React.FC = () => {
   );
 };
 
-export default ProductList;
+export default Products;

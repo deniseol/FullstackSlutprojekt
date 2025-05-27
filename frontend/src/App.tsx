@@ -1,11 +1,11 @@
 import { useEffect } from 'react'
 import './App.css'
 
-import ProductList  from './components/productSide/products';
-
-import Header from './components/header/Header.tsx'
 
 
+import Header from './components/Header/Header.tsx'
+
+import Products  from './components/productSide/Products.tsx'
 
 function App() {
     useEffect(() => {
@@ -16,15 +16,11 @@ function App() {
 
     return (
 
-
-        <div>
+        <>
+        <Header />
+        <Products />
         <h1>Min app</h1>
-        </div>
-
-      <>
-      <Header />
-      <h1>Min app</h1>
-    </>
+        </>
           )
 
 }

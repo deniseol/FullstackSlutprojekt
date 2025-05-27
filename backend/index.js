@@ -76,7 +76,7 @@ app.get('/api', async (req, res) => {
 
 // API: Hämta alla produkter
 
-app.get('/products', async (req, res) => {
+app.get('/api/products', async (req, res) => {
 
   try {
 
