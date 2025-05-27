@@ -1,0 +1,14 @@
+h1 {
+  background-color: green;
+}
+
+.fixed-top {
+  background-color: #471630;
+  color: #ffc739 !important;
+  height: 10vw;
+  font-size: 3rem;
+  letter-spacing: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
