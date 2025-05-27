@@ -7,6 +7,8 @@ import Header from './components/Header/Header.tsx'
 
 import Products  from './components/productSide/Products.tsx'
 
+import Footer from './components/footer/Footer.tsx'
+
 function App() {
     useEffect(() => {
         fetch("/api")
@@ -20,7 +22,9 @@ function App() {
         <Header />
         <Products />
         <h1>Min app</h1>
+        <Footer />
         </>
+
           )
 
 }
