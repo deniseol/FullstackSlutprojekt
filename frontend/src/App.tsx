@@ -1,5 +1,7 @@
 import { useEffect } from 'react'
 import './App.css'
+import ProductList  from './components/productSide/products';
+
 
 function App() {
     useEffect(() => {
@@ -9,6 +11,7 @@ function App() {
     }, []);
 
     return (
+        
         <div>
         <h1>Min app</h1>
         </div>
