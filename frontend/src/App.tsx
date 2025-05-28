@@ -1,8 +1,6 @@
 import { useEffect } from 'react'
 import './App.css'
 
-
-
 import Header from './components/Header/Header.tsx'
 
 import Products  from './components/productSide/Products.tsx'
