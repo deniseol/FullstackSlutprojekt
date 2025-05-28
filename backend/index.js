@@ -62,7 +62,7 @@ app.get('/api', async (req, res) => {
 
 // API: Hämta alla produkter
 
-app.get('/products', async (req, res) => {
+app.get('/api/products', async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM products')
 
@@ -75,18 +75,35 @@ app.get('/products', async (req, res) => {
       .json({ error: 'Database error or table "products" does not exist' })
   }
 })
+
+/* app.post('/newProducts', (req, res) => {
+    const { name, text } = req.body;
+    if (!name || !text) {
+        return res.sendStatus(400);
+    }
+    data.push({ name, text });
+    //console.log(data)
+    res.json({
+        name: name,
+        text: text
+    })
+});
+ */
 
 app.get('/', async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM products')
+
     res.json(result.rows)
   } catch (err) {
     console.error('❌ Error in /products:', err)
+
     res
       .status(500)
       .json({ error: 'Database error or table "products" does not exist' })
   }
 })
+
 // Starta servern
 
 app.listen(port, () => {
