@@ -1,6 +1,7 @@
 // components/ProductList.tsx
 import React, { useState, useEffect } from 'react';
 import type { Product } from '../types/Product';
+import './products.css';
 
 const Products: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
