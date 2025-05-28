@@ -2,13 +2,52 @@ h1 {
   background-color: green;
 }
 
+.container-nav {
+  background-color: green;
+}
 .fixed-top {
   background-color: #471630;
   color: #ffc739 !important;
-  height: 10vw;
+  height: 6rem;
   font-size: 3rem;
   letter-spacing: 1px;
+  max-height: 200px;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.navbar-custom a {
+  color: #ffc739 !important;
+  font-size: 2rem;
+  min-height: 80px;
+}
+
+.navbar-brand {
   display: flex;
-  justify-content: center;
   align-items: center;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 1rem;
+}
+
+/* Ändra färg på hamburgarmeny-ikonen */
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23ffc739' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+/* Ändra färg när menyn är öppen (X-ikonen) */
+.navbar-dark .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23ff0000' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M6 6L24 24M24 6L6 24'/%3e%3c/svg%3e") !important;
+}
+
+.navbar-toggler {
+  border: 1px solid rgba(255, 199, 57, 0.3) !important;
+  border-radius: 4px;
+  padding: 0.25rem;
 }
