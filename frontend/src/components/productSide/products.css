@@ -44,3 +44,21 @@
     background-color: #cccccc;
     cursor: not-allowed;
   }
+
+.product-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    max-height: fit-content;
+  }
+
+  .product-card p {
+    margin: 10px 0;
+    color: #000000;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  }
+
+  .product-card .price {
+    font-weight: bold;
+    color: #333;
+  }

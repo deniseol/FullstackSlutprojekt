@@ -34,12 +34,13 @@ const Products = () => {
         {products.map((product) => (
           <div key={product.id} className="product-card">
             <h3>{product.name}</h3>
-            <img src={`${product.bild_url}`}/>
+            <img src={product.bild_url} alt="Produktbild" />
+           {/*  <img src='../assets/product8.png' alt="Produktbild" /> */}
             <p>Price: ${product.price.toFixed(2)}</p>
             <p>In stock: {product.amount}</p>
             <button
               disabled={product.amount <= 0}
-              onClick={() => console.log('Add to cart:', product.id)}
+              onClick={() => console.log('Add to cart:', product.id, product.bild_url)}
             >
               {product.amount > 0 ? 'Add to Cart' : 'Out of Stock'}
             </button>

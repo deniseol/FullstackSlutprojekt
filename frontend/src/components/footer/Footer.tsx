@@ -2,7 +2,7 @@ import './Footer.css';
 export default function Header() {
     return (
       <footer className="footer">
-          <p>© 2023 Min E-handel. All rights reserved.</p>
+          <p>© 2025 Obscure Hats. All rights reserved.</p>
           <p>Contact us: <a href="mailto:Låtta@mail.com"/></p>
       </footer>
     )
