@@ -1,5 +1,5 @@
 import './Footer.css';
-export default function Header() {
+export default function Footer() {
     return (
       <footer className="footer">
           <p>© 2025 Obscure Hats. All rights reserved.</p>
@@ -7,3 +7,4 @@ export default function Header() {
       </footer>
     )
 };
+

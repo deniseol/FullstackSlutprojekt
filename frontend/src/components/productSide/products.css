@@ -49,7 +49,7 @@
     max-width: 100%;
     height: auto;
     border-radius: 4px;
-    max-height: fit-content;
+    max-height: 300px;
   }
 
   .product-card p {

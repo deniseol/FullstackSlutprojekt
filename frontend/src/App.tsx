@@ -3,9 +3,11 @@ import './App.css'
 
 import Header from './components/Header/Header.tsx'
 
-import Products  from './components/productSide/Products.tsx'
+import Products  from './components/productSide/products.tsx'
 
 import Footer from './components/footer/Footer.tsx'
+
+import Form from './components/form/form.tsx'
 
 function App() {
     useEffect(() => {
@@ -17,8 +19,10 @@ function App() {
     return (
 
         <>
+
         <Header />
         <Products />
+        <Form />
         <h1>Min app</h1>
         <Footer />
         </>
