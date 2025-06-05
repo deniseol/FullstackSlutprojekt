@@ -73,6 +73,21 @@ app.get('/api/products', async (req, res) => {
   }
 })
 
+app.get('/api/categories', async (req, res) => {
+    try {
+      const result = await pool.query('SELECT * FROM categories')
+
+      res.json(result.rows)
+    } catch (err) {
+      console.error('❌ Error in /categories:', err)
+
+      res
+        .status(500)
+        .json({ error: 'Database error or table "categories" does not exist' })
+    }
+  })
+
+
 app.get('/', async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM products')
