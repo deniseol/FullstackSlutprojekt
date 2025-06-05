@@ -95,6 +95,8 @@ const CategoryMenu: React.FC = () => {
       marginTop: '1rem',
     },
     card: {
+      height: '100%',
+      width: '100%',
       border: '1px solid #e0e0e0',
       borderRadius: '8px',
       overflow: 'hidden',
@@ -106,8 +108,8 @@ const CategoryMenu: React.FC = () => {
     },
     image: {
       width: '100%',
-      height: '180px',
-      objectFit: 'cover',
+      height: '200px',
+
     },
     info: {
       padding: '1rem',
@@ -134,7 +136,7 @@ const CategoryMenu: React.FC = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await fetch('/api/categories');
+        const response = await fetch('http://localhost:5050/api/categories');
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         const data: Category[] = await response.json();
         setCategories(data);
