@@ -1,16 +1,27 @@
+import { useState } from 'react';
 import './Header.css';
 
 export default function Header() {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setIsOpen(!isOpen);
+    };
+
     return (
       <header>
-        <h1>Min E-handel</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
         <div className="fixed-top">
           <nav className="navbar navbar-light navbar-expand-lg navbar-custom">
             <div className="container-fluid">
               {/* Vänster sida - Logo */}
-              <a className="navbar-brand align-self-center" style={{color: '#ffc739'}} href="#">
+              <a className="navbar-brand align-self-center" style={{color: '#ffc739'}} href="/" >
+              <img 
+            src="/src/assets/tophat-logo.svg" 
+            alt="Logo" 
+            width="30" 
+            height="30" 
+            className="me-2"
+          />
                 OBSCURE HATS
               </a>
               
@@ -18,15 +29,14 @@ export default function Header() {
               <button 
                 className="navbar-toggler" 
                 type="button" 
-                data-bs-toggle="collapse" 
-                data-bs-target="#navbarNavDropdown"
+                onClick={toggleMenu}
               >
                 <span className="navbar-toggler-icon"></span>
               </button>
 
               {/* Höger sida - Meny */}
-              <div className="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul className="navbar-nav ms-auto"> {/* ms-auto skjuter till höger */}
+              <div className={`collapse navbar-collapse ${isOpen ? 'show' : ''}`} id="navbarNavDropdown">
+                <ul className="navbar-nav ms-auto">
                   <li className="nav-item">
                     <a className="nav-link active" href="#">Home</a>
                   </li>
@@ -48,6 +58,5 @@ export default function Header() {
           </nav>
         </div>
       </header>
-      
     )
 }

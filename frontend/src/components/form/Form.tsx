@@ -5,7 +5,7 @@ import './Form.css';
 const Form = () => {
   return (
     <form className="form-container">
-      <h2>Your Information</h2>
+      <h3>Your Information</h3>
 
       <div className="form-row">
         <div className="form-group">
