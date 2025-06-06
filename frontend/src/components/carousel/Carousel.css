@@ -1,0 +1,111 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 8rem; /* padding över komponenten (Carousel)*/
+  overflow-x: hidden; /* ser till så sidan inte blir slide, VIKTIGTTTT!!!! */
+}
+
+.category-carousel-container {
+  width: 100%;
+  max-width: 100%; /* Förhindrar att containern blir bredare än sidan */
+  padding-bottom: 3rem;
+  overflow: hidden; /* Förhindrar att innehållet läcker ut */
+}
+
+.horizontal-scroll-container {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden; /* Förhindrar vertikal scroll */
+  gap: 1.5rem;
+  padding: 1rem;
+  scroll-behavior: smooth;
+
+  /* VIKTIGT: Håll containern inom sidans bredd */
+  width: 100%;
+  max-width: 100%;
+
+  /* Smooth scrolling för touch devices */
+  -webkit-overflow-scrolling: touch;
+
+  /* Scrollbar styling */
+  &::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #d5d5d5;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #989898;
+  }
+}
+
+.category-item {
+  width: 200px; /* fast bredd per item */
+  min-width: 300px; /* Säkerställer minsta bredd */
+  background: white;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: grab;
+}
+
+.category-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.category-item:active {
+  cursor: crosshair;
+}
+
+.category-image {
+  width: 100%;
+  height: 100px;
+  object-fit: contain;
+}
+
+.category-caption {
+  padding: 0.5rem;
+}
+
+.category-caption h5 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.category-caption p {
+  margin: 0;
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .category-item {
+    width: 250px;
+    min-width: 250px;
+  }
+
+  .horizontal-scroll-container {
+    gap: 1rem;
+    padding: 1rem 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .category-item {
+    width: 200px;
+    min-width: 200px;
+  }
+}

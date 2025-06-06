@@ -57,36 +57,36 @@ app.get('/api/products', async (req, res) => {
       .json({ error: 'Database error or table "products" does not exist' })
   }
 })
-
-// API: Hämta alla produkter
-app.get('/api/products', async (req, res) => {
+app.get('/api/products/:id', async (req, res) => {
+  const id = Number(req.params.id)
   try {
-    const result = await pool.query('SELECT * FROM products')
-
-    res.json(result.rows)
+    const result = await pool.query('SELECT * FROM products WHERE id = $1', [
+      id
+    ])
+    if (result.rows.length > 0) {
+      res.json(result.rows[0])
+    } else {
+      res.status(404).json({ error: 'Product not found' })
+    }
   } catch (err) {
-    console.error('❌ Error in /products:', err)
-
-    res
-      .status(500)
-      .json({ error: 'Database error or table "products" does not exist' })
+    console.error('❌ Error in /products/:id:', err)
+    res.status(500).json({ error: 'Database error' })
   }
 })
 
 app.get('/api/categories', async (req, res) => {
-    try {
-      const result = await pool.query('SELECT * FROM categories')
+  try {
+    const result = await pool.query('SELECT * FROM categories')
 
-      res.json(result.rows)
-    } catch (err) {
-      console.error('❌ Error in /categories:', err)
+    res.json(result.rows)
+  } catch (err) {
+    console.error('❌ Error in /categories:', err)
 
-      res
-        .status(500)
-        .json({ error: 'Database error or table "categories" does not exist' })
-    }
-  })
-
+    res
+      .status(500)
+      .json({ error: 'Database error or table "categories" does not exist' })
+  }
+})
 
 app.get('/', async (req, res) => {
   try {

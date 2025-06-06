@@ -1,12 +1,16 @@
 // components/ProductList.tsx
 import { useState, useEffect } from 'react';
 import type { Product } from '../types/Product';
+import { useNavigate } from 'react-router-dom';
 import './products.css';
+
 
 const Products = () => {
     const [products, setProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const navigate = useNavigate();
+
 
     useEffect(() => {
       const fetchProducts = async () => {
@@ -21,21 +25,29 @@ const Products = () => {
         }
       };
 
+
       fetchProducts();
     }, []);
+
 
     if (loading) return <div>Loading products...</div>;
     if (error) return <div>Error: {error}</div>;
 
+
     return (
       <div className="product-list">
         <h2>Hats Collection</h2>
-        <div className="row"> {/* Bootstrap row */}
+        <div className="row">
           {products.map((product) => (
-            <div key={product.id} className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4"> {/* Bootstrap columns */}
+            <div key={product.id} className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
               <div className="product-card">
                 <h3>{product.name}</h3>
-                <img src={product.bild_url} alt="Produktbild" />
+                <img
+                  src={product.bild_url}
+                  alt="Produktbild"
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => navigate(`/product/${product.id}`)}
+                />
                 <p>Price: ${product.price.toFixed(2)}</p>
                 <p>In stock: {product.amount}</p>
                 <button
@@ -50,5 +62,6 @@ const Products = () => {
         </div>
       </div>
     );}
+
 
 export default Products;
