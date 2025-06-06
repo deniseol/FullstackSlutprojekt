@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import type { Product } from '../types/Product';
 import { useNavigate } from 'react-router-dom';
 import './products.css';
+import { useCart } from '../../context/CartContext';
 
 
 const Products = () => {
@@ -10,6 +11,7 @@ const Products = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const navigate = useNavigate();
+    const { addToCart } = useCart();
 
 
     useEffect(() => {
@@ -52,7 +54,7 @@ const Products = () => {
                 <p>In stock: {product.amount}</p>
                 <button
                   disabled={product.amount <= 0}
-                  onClick={() => console.log('Add to cart:', product.id, product.bild_url)}
+                  onClick={() => addToCart(product)}
                 >
                   {product.amount > 0 ? 'Add to Cart' : 'Out of Stock'}
                 </button>
