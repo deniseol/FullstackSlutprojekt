@@ -1,0 +1,96 @@
+.product-details-page {
+  max-width: 600px; /* Större maxbredd */
+  width: 90vw; /* Nästan hela skärmen på små enheter */
+  margin: 2rem auto;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  padding: 2rem 2rem 2.5rem 2rem; /* Mer padding */
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 25px; /* Större textstorlek */
+  box-sizing: border-box;
+}
+
+@media (max-width: 700px) {
+  .product-details-page {
+    max-width: 98vw;
+    padding: 1rem 0.5rem 1.5rem 0.5rem;
+  }
+}
+
+.product-details-page img {
+  width: 100%;
+  border-radius: 14px;
+  margin-bottom: 1rem;
+  object-fit: cover;
+}
+
+.product-details-page h2 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin: 0.5rem 0 0.2rem 0;
+}
+
+.product-details-page .brand {
+  color: #7a7a7a;
+  font-size: 0.95rem;
+  margin-bottom: 0.2rem;
+}
+
+.product-details-page .price {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: 0.2rem 0 0.7rem 0;
+}
+
+.product-details-page .reviews {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.product-details-page .reviews .star {
+  color: #f7b32b;
+  margin-right: 0.3rem;
+}
+
+.product-details-page select {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-bottom: 1.2rem;
+  font-size: 1rem;
+}
+
+.product-details-page button {
+  width: 100%;
+  background: #5a1a2c;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.9rem 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.product-details-page button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.product-details-page .model-info {
+  color: #888;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.product-details-page .choose-size-label {
+  font-size: 40px;
+  font-weight: 500;
+  margin-bottom: 0.2rem;
+  display: block;
+}
