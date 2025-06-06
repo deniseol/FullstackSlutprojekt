@@ -8,6 +8,8 @@ import Footer from './components/footer/Footer.tsx'
 import Checkout from './components/checkout/Checkout.tsx'
 import Carousel from './components/carousel/Carousel.tsx'
 import ProductDetails from './components/productDetails/productDetails.tsx'
+import CategoryProducts from './components/category/CategoryProducts.tsx'
+import AdminForm from './components/admin/AdminForm.tsx'
 
 function App() {
     useEffect(() => {
@@ -25,7 +27,7 @@ function App() {
               <Route path="/" element={
                   <>
                       <h2>WELCOME TO <br></br>the <b><u>best</u></b> HAT store ever</h2>
-                
+
                       <Products />
                       <h2>Min app</h2>
                   </>
@@ -34,6 +36,9 @@ function App() {
               {/* Cart-sidan - localhost:5173/cart */}
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/product/:id" element={<ProductDetails />} />
+              <Route path="/category/:categoryId" element={<CategoryProducts />} />
+              <Route path="/admin" element={<AdminForm />} />
+
           </Routes>
 
           <Footer />
