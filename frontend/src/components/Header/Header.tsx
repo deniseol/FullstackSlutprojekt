@@ -1,8 +1,11 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useCart } from '../../context/CartContext';
 import './Header.css';
 
 export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
+    const { cart } = useCart();
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
@@ -14,16 +17,16 @@ export default function Header() {
           <nav className="navbar navbar-light navbar-expand-lg navbar-custom">
             <div className="container-fluid">
               {/* Vänster sida - Logo */}
-              <a className="navbar-brand align-self-center" style={{color: '#ffc739'}} href="/" >
-              <img 
-            src="/src/assets/tophat-logo.svg" 
-            alt="Logo" 
-            width="30" 
-            height="30" 
-            className="me-2"
-          />
+              <Link className="navbar-brand align-self-center" style={{color: '#ffc739'}} to="/" >
+                <img 
+                  src="/src/assets/tophat-logo.svg" 
+                  alt="Logo" 
+                  width="30" 
+                  height="30" 
+                  className="me-2"
+                />
                 OBSCURE HATS
-              </a>
+              </Link>
               
               {/* Hamburgarmeny-knapp */}
               <button 
@@ -38,18 +41,20 @@ export default function Header() {
               <div className={`collapse navbar-collapse ${isOpen ? 'show' : ''}`} id="navbarNavDropdown">
                 <ul className="navbar-nav ms-auto">
                   <li className="nav-item">
-                    <a className="nav-link active" href="#">Home</a>
+                    <Link className="nav-link active" to="/">Home</Link>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="#">Cart</a>
+                    <Link className="nav-link" to="/cart">
+                      🛒 Cart ({cart.length})
+                    </Link>
                   </li>
                   <li className="nav-item dropdown">
                     <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown">
                       Menu
                     </a>
                     <div className="dropdown-menu dropdown-menu-end">
-                      <a className="dropdown-item" href="#">Categories</a>
-                      <a className="dropdown-item" href="#">Products</a>
+                      <Link className="dropdown-item" to="/categories">Categories</Link>
+                      <Link className="dropdown-item" to="/products">Products</Link>
                     </div>
                   </li>
                 </ul>
