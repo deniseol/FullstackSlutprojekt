@@ -43,6 +43,7 @@ app.get('/api', async (req, res) => {
   }
 })
 
+
 // API: Hämta alla produkter
 app.get('/api/products', async (req, res) => {
   try {
@@ -182,20 +183,20 @@ app.get('/api/categories/:categoryId/products', async (req, res) => {
 })
 // API: Lägg till ny produkt (admin)
 app.post('/api/products', async (req, res) => {
-    const { name, price, image_url, category_id } = req.body
-
+  console.log(req.body); // Lägg till denna rad!
+  const { id, name, price, amount, bild_url, description } = req.body;
 
     try {
       const result = await pool.query(
-        'INSERT INTO products (name, price, image_url, category_id) VALUES ($1, $2, $3, $4) RETURNING *',
-        [name, price, image_url, category_id]
-      )
-      res.json(result.rows[0])
+        'INSERT INTO products (id, name, price, amount, bild_url, description) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *',
+        [id, name, price, amount, bild_url, description]
+      );
+      res.json(result.rows[0]);
     } catch (err) {
-      console.error('❌ Error adding product:', err)
-      res.status(500).json({ error: 'Server error' })
+      console.error('❌ Error adding product:', err);
+      res.status(500).json({ error: 'Server error' });
     }
-   })
+});
 
 // Starta servern
 

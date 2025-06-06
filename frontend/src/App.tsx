@@ -5,19 +5,21 @@ import Carousel from './components/carousel/Carousel';
 import Products from './components/productSide/products';
 import ProductDetails from './components/productDetails/productDetails';
 import CategoryProducts from './components/category/CategoryProducts';
-import AdminForm from './components/admin/AdminForm';
 import Cart from './components/cart/Cart';
 import Checkout from './components/checkout/Checkout';
 import Footer from './components/footer/Footer';
+import AdminForm from './components/admin/AdminForm';
 
 function App() {
   return (
     <CartProvider>
       <Router>
-        <Header />
+
         <Carousel />
+        <Header />
         <Routes>
           <Route path="/" element={
+
             <>
               <h2>WELCOME TO <br />the <b><u>best</u></b> HAT store ever</h2>
               <Products />
@@ -29,6 +31,10 @@ function App() {
           <Route path="/category/:categoryId" element={<CategoryProducts />} />
           <Route path="/admin" element={<AdminForm />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/categories" element={<Carousel />} />
+          <Route path="/products/:id" element={<ProductDetails />} />
+
         </Routes>
         <Footer />
       </Router>

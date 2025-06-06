@@ -18,20 +18,20 @@ export default function Header() {
             <div className="container-fluid">
               {/* Vänster sida - Logo */}
               <Link className="navbar-brand align-self-center" style={{color: '#ffc739'}} to="/" >
-                <img 
-                  src="/src/assets/tophat-logo.svg" 
-                  alt="Logo" 
-                  width="30" 
-                  height="30" 
+                <img
+                  src="/src/assets/tophat-logo.svg"
+                  alt="Logo"
+                  width="30"
+                  height="30"
                   className="me-2"
                 />
                 OBSCURE HATS
               </Link>
-              
+
               {/* Hamburgarmeny-knapp */}
-              <button 
-                className="navbar-toggler" 
-                type="button" 
+              <button
+                className="navbar-toggler"
+                type="button"
                 onClick={toggleMenu}
               >
                 <span className="navbar-toggler-icon"></span>
@@ -48,12 +48,15 @@ export default function Header() {
                       🛒 Cart ({cart.length})
                     </Link>
                   </li>
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/admin">Admin</Link>
+                    </li>
                   <li className="nav-item dropdown">
                     <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown">
                       Menu
                     </a>
                     <div className="dropdown-menu dropdown-menu-end">
-                      <Link className="dropdown-item" to="/categories">Categories</Link>
+                      <Link className="dropdown-item" to="/home">Categories</Link>
                       <Link className="dropdown-item" to="/products">Products</Link>
                     </div>
                   </li>
