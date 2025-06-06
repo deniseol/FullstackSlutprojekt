@@ -165,6 +165,38 @@ app.delete('/api/cart/:id', async (req, res) => {
   }
 })
 
+app.get('/api/categories/:categoryId/products', async (req, res) => {
+  const categoryId = Number(req.params.categoryId)
+  try {
+    const result = await pool.query(
+      `SELECT p.* FROM products p
+       JOIN product_categories pc ON p.id = pc.id
+       WHERE pc.category_id = $1`,
+      [categoryId]
+    )
+    res.json(result.rows)
+  } catch (err) {
+    console.error('❌ Error in /categories/:categoryId/products:', err)
+    res.status(500).json({ error: 'Database error' })
+  }
+})
+// API: Lägg till ny produkt (admin)
+app.post('/api/products', async (req, res) => {
+    const { name, price, image_url, category_id } = req.body
+
+
+    try {
+      const result = await pool.query(
+        'INSERT INTO products (name, price, image_url, category_id) VALUES ($1, $2, $3, $4) RETURNING *',
+        [name, price, image_url, category_id]
+      )
+      res.json(result.rows[0])
+    } catch (err) {
+      console.error('❌ Error adding product:', err)
+      res.status(500).json({ error: 'Server error' })
+    }
+   })
+
 // Starta servern
 
 app.listen(port, () => {
