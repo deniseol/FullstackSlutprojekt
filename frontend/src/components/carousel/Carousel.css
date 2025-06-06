@@ -9,7 +9,7 @@
 .category-carousel-container {
   width: 100%;
   max-width: 100%; /* Förhindrar att containern blir bredare än sidan */
-  padding-bottom: 3rem;
+  padding-bottom: 1.2rem;
   overflow: hidden; /* Förhindrar att innehållet läcker ut */
 }
 

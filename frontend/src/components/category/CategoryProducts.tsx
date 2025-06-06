@@ -1,12 +1,14 @@
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import type { Product } from '../types/Product';
+import { useCart } from '../../context/CartContext';
 
 const CategoryProducts = () => {
   const { categoryId } = useParams<{ categoryId: string }>();
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const { addToCart } = useCart();
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -33,10 +35,18 @@ const CategoryProducts = () => {
         {products.map(product => (
           <div key={product.id} className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
             <div className="product-card">
-              <h3>{product.name}</h3>
-              <img src={product.bild_url} alt={product.name} />
-              <p>Price: ${product.price.toFixed(2)}</p>
-              <p>In stock: {product.amount}</p>
+              <Link to={`/products/${product.id}`}>
+                <img src={product.bild_url} alt={product.name} />
+                <h3>{product.name}</h3>
+                <p>{product.price} $ </p>
+              </Link>
+              <button
+                className='addCartButton'
+                disabled={product.amount <= 0}
+                onClick={() => addToCart(product)}
+              >
+                Add to cart
+              </button>
             </div>
           </div>
         ))}

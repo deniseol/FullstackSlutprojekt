@@ -4,4 +4,5 @@ export interface Product {
     price: number;
     amount: number;
     bild_url: string;
+    description?: string; // Optional field for product description
 }
