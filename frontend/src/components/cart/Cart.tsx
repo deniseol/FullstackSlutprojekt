@@ -1,5 +1,6 @@
 import { useCart } from '../../context/CartContext';
 import './Cart.css';
+import { Link } from 'react-router-dom'
 
 const Cart = () => {
   const { cart, addToCart, removeFromCart, removeAllFromCart } = useCart();
@@ -65,6 +66,13 @@ const Cart = () => {
         </ul>
       )}
       <p className="price-total" id="cart-total"><b>Total: ${total.toFixed(2)}</b></p>
+      <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+        <Link to="/checkout">
+          <button className="btn btn-primary" id="checkout-btn">
+            Till kassan
+          </button>
+        </Link>
+      </div>
     </div>
   );
 };
